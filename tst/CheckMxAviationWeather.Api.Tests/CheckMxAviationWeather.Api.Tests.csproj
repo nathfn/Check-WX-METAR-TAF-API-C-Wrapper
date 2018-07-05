@@ -59,7 +59,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CheckMxAviationWeather.Api\CheckMxAviationWeather.Api.csproj">
+    <ProjectReference Include="..\..\src\CheckMxAviationWeather.Api\CheckMxAviationWeather.Api.csproj">
       <Project>{c4a6e711-4d91-4358-b1a4-a495d42ea271}</Project>
       <Name>CheckMxAviationWeather.Api</Name>
     </ProjectReference>
