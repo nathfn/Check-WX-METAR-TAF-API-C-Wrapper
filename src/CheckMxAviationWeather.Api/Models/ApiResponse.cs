@@ -3,9 +3,9 @@
     /// <summary>
     /// Models a raw response from the API with the returned JSON string and the HTTP status code.
     /// </summary>
-    public class RawApiResponse
+    public class ApiResponse
     {
-        public RawApiResponse(string json, int httpStatusCode)
+        public ApiResponse(string json, int httpStatusCode)
         {
             Json = json;
             HttpStatusCode = httpStatusCode;

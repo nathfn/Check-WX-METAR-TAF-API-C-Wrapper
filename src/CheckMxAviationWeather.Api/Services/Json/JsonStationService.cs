@@ -4,20 +4,19 @@ using System.Globalization;
 using CheckMxAviationWeather.Api.Enum;
 using CheckMxAviationWeather.Api.Extensions;
 using CheckMxAviationWeather.Api.Models;
-using Newtonsoft.Json;
 
-namespace CheckMxAviationWeather.Api.Services.Raw
+namespace CheckMxAviationWeather.Api.Services.Json
 {
-    public class RawStationService : RawServicesBase
+    public class JsonStationService : ServicesBase
     {
-        internal RawStationService(string apiKey, string apiBaseUrl, int metarTafCacheTimeInMinutes, int stationCacheTimeInMinutes) : base(apiKey, apiBaseUrl, metarTafCacheTimeInMinutes, stationCacheTimeInMinutes) { }
+        internal JsonStationService(string apiKey, string apiBaseUrl, int metarTafCacheTimeInMinutes, int stationCacheTimeInMinutes) : base(apiKey, apiBaseUrl, metarTafCacheTimeInMinutes, stationCacheTimeInMinutes) { }
 
         /// <summary>
         /// Returns the latest Station information for a single ICAO code.
         /// </summary>
         /// <param name="icao">A single ICAO code</param>
         /// <returns></returns>
-        public RawApiResponse Single(string icao)
+        public ApiResponse Single(string icao)
         {
             if (string.IsNullOrEmpty(icao))
                 throw new ArgumentNullException(nameof(icao), "Please specify an ICAO code!");
@@ -30,7 +29,7 @@ namespace CheckMxAviationWeather.Api.Services.Raw
         /// </summary>
         /// <param name="icaoList">Multiple ICAO codes. Maximum of 25 ICAO codes per API request.</param>
         /// <returns></returns>
-        public RawApiResponse Multiple(List<string> icaoList)
+        public ApiResponse Multiple(List<string> icaoList)
         {
             if (!icaoList.AnyNullSafe())
                 throw new ArgumentException("No ICAO codes specified! You must specify at least one ICAO code!", nameof(icaoList));
@@ -49,7 +48,7 @@ namespace CheckMxAviationWeather.Api.Services.Raw
         /// <param name="radius">The surrounding radius in miles from the parameter ICAO code</param>
         /// <param name="stationType">Filter the results by station type.</param>
         /// <returns></returns>
-        public RawApiResponse Radius(string icao, int radius, StationType? stationType = null)
+        public ApiResponse Radius(string icao, int radius, StationType? stationType = null)
         {
             if (string.IsNullOrEmpty(icao))
                 throw new ArgumentNullException(nameof(icao), "Please specify an ICAO code!");
@@ -66,7 +65,7 @@ namespace CheckMxAviationWeather.Api.Services.Raw
         /// <param name="longitude">The decimal longitude</param>
         /// <param name="stationType">Filter the results by station type.</param>
         /// <returns></returns>
-        public RawApiResponse LatitudeLongitude(double latitude, double longitude, StationType? stationType = null)
+        public ApiResponse LatitudeLongitude(double latitude, double longitude, StationType? stationType = null)
         {
             var handle = ApiHandles.StationLatLon.Replace("{latitude}", latitude.ToString(CultureInfo.InvariantCulture)).Replace("{longitude}",longitude.ToString(CultureInfo.InvariantCulture));
             handle = stationType != null ? handle.Replace("{type}", stationType.GetEnumDescription()) : handle.Replace("?type={type}", string.Empty);
@@ -82,7 +81,7 @@ namespace CheckMxAviationWeather.Api.Services.Raw
         /// <param name="radius">The surrounding radius in miles from the parameter ICAO code</param>
         /// <param name="stationType">Filter the results by station type.</param>
         /// <returns></returns>
-        public RawApiResponse LatitudeLongitudeRadius(double latitude, double longitude, int radius, StationType? stationType = null)
+        public ApiResponse LatitudeLongitudeRadius(double latitude, double longitude, int radius, StationType? stationType = null)
         {
             var handle = ApiHandles.StationLatLonRadius.Replace("{latitude}", latitude.ToString(CultureInfo.InvariantCulture)).Replace("{longitude}", longitude.ToString(CultureInfo.InvariantCulture)).Replace("{radius}", Convert.ToString(radius));
             handle = stationType != null ? handle.Replace("{type}", stationType.GetEnumDescription()) : handle.Replace("?type={type}", string.Empty);

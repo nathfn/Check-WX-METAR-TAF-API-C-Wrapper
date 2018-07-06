@@ -2,18 +2,18 @@
 using System.Linq;
 using CheckMxAviationWeather.Api.Enum;
 using CheckMxAviationWeather.Api.Models;
-using CheckMxAviationWeather.Api.Services.Raw;
+using CheckMxAviationWeather.Api.Services.Json;
 using Newtonsoft.Json;
 
 namespace CheckMxAviationWeather.Api.Services
 {
     public class StationService
     {
-        private readonly RawStationService _rawStationService;
+        private readonly JsonStationService _jsonStationService;
 
         internal StationService(string apiKey, string apiBaseUrl, int metarTafCacheTimeInMinutes, int stationCacheTimeInMinutes)
         {
-            _rawStationService = new RawStationService(apiKey, apiBaseUrl, metarTafCacheTimeInMinutes, stationCacheTimeInMinutes);
+            _jsonStationService = new JsonStationService(apiKey, apiBaseUrl, metarTafCacheTimeInMinutes, stationCacheTimeInMinutes);
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace CheckMxAviationWeather.Api.Services
         /// <returns></returns>
         public Station Single(string icao)
         {
-            var station = _rawStationService.Single(icao);
+            var station = _jsonStationService.Single(icao);
             var asObj = JsonConvert.DeserializeObject<ApiResponseObject<List<Station>>>(station.Json);
             return asObj?.Data?.FirstOrDefault();
         }
@@ -35,7 +35,7 @@ namespace CheckMxAviationWeather.Api.Services
         /// <returns></returns>
         public List<Station> Multiple(List<string> icaoList)
         {
-            var station = _rawStationService.Multiple(icaoList);
+            var station = _jsonStationService.Multiple(icaoList);
             var asObj = JsonConvert.DeserializeObject<ApiResponseObject<List<Station>>>(station.Json);
             return asObj?.Data ?? new List<Station>();
         }
@@ -51,7 +51,7 @@ namespace CheckMxAviationWeather.Api.Services
         /// <returns></returns>
         public List<Station> Radius(string icao, int radius, StationType? stationType = null)
         {
-            var station = _rawStationService.Radius(icao, radius, stationType);
+            var station = _jsonStationService.Radius(icao, radius, stationType);
             var asObj = JsonConvert.DeserializeObject<ApiResponseObject<List<Station>>>(station.Json);
             return asObj?.Data ?? new List<Station>();
         }
@@ -66,7 +66,7 @@ namespace CheckMxAviationWeather.Api.Services
         /// <returns></returns>
         public Station LatitudeLongitude(double latitude, double longitude, StationType? stationType = null)
         {
-            var station = _rawStationService.LatitudeLongitude(latitude, longitude, stationType);
+            var station = _jsonStationService.LatitudeLongitude(latitude, longitude, stationType);
             var asObj = JsonConvert.DeserializeObject<ApiResponseObject<List<Station>>>(station.Json);
             return asObj?.Data?.FirstOrDefault();
         }
@@ -82,7 +82,7 @@ namespace CheckMxAviationWeather.Api.Services
         /// <returns></returns>
         public List<Station> LatitudeLongitudeRadius(double latitude, double longitude, int radius, StationType? stationType = null)
         {
-            var station = _rawStationService.LatitudeLongitudeRadius(latitude, longitude, radius, stationType);
+            var station = _jsonStationService.LatitudeLongitudeRadius(latitude, longitude, radius, stationType);
             var asObj = JsonConvert.DeserializeObject<ApiResponseObject<List<Station>>>(station.Json);
             return asObj?.Data ?? new List<Station>();
         }

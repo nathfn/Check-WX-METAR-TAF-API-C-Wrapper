@@ -21,6 +21,7 @@ namespace CheckMxAviationWeather.Api
         public CheckWxServices(string apiKey, string apiBaseUrl, int metarTafCacheTimeInMinutes, int stationCacheTimeInMinutes)
         {
             Stations = new StationService(apiKey, apiBaseUrl, metarTafCacheTimeInMinutes, stationCacheTimeInMinutes);
+            Metars = new MetarService(apiKey, apiBaseUrl, metarTafCacheTimeInMinutes, stationCacheTimeInMinutes);
         }
 
         /// <summary>
@@ -30,5 +31,7 @@ namespace CheckMxAviationWeather.Api
         /// The station services.
         /// </value>
         public StationService Stations { get; }
+
+        public MetarService Metars { get; set; }
     }
 }

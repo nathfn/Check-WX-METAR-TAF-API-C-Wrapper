@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckWxRawServices.cs" />
+    <Compile Include="CheckWxRawJsonServices.cs" />
     <Compile Include="CheckWxServices.cs" />
     <Compile Include="Communication\Http.cs" />
     <Compile Include="Config\ApiHandles.cs" />
@@ -53,22 +53,23 @@
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\WebResponseExtensions.cs" />
-    <Compile Include="Factories\RawStreakApiResponseFactory.cs" />
+    <Compile Include="Factories\ApiResponseFactory.cs" />
     <Compile Include="Helpers\CacheWrapper.cs" />
     <Compile Include="Models\ApiResponseObject.cs" />
     <Compile Include="Models\ErrorObject.cs" />
     <Compile Include="Models\Metar.cs" />
-    <Compile Include="Models\RawApiResponse.cs" />
+    <Compile Include="Models\ApiResponse.cs" />
     <Compile Include="Models\Station.cs" />
     <Compile Include="Models\Taf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Raw\RawServicesBase.cs" />
-    <Compile Include="Services\Raw\RawStationService.cs" />
+    <Compile Include="Services\MetarService.cs" />
+    <Compile Include="Services\Json\JsonMetarService.cs" />
+    <Compile Include="Services\ServicesBase.cs" />
+    <Compile Include="Services\Json\JsonStationService.cs" />
     <Compile Include="Services\StationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
