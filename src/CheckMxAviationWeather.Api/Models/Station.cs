@@ -8,7 +8,7 @@ namespace CheckMxAviationWeather.Api.Models
     /// Our database contains over 44,000 ICAO codes to choose from.
     /// You can search a listing of all ICAO codes on CheckWX.com
     /// </summary>
-    public class Station
+    public class Station: AviationWeatherBaseObject
     {
         /// <summary>
         /// ICAO airport code or station indicator
@@ -111,56 +111,5 @@ namespace CheckMxAviationWeather.Api.Models
         /// </summary>
         [JsonProperty("useage")]
         public string Useage { get; set; }
-    }
-
-    public class Position
-    {
-        /// <summary>
-        /// Decimal degrees
-        /// </summary>
-        [JsonProperty("decimal")]
-        public double Decimal { get; set; }
-
-        /// <summary>
-        /// Degrees, minutes, seconds
-        /// </summary>
-        [JsonProperty("degrees")]
-        public string Degrees { get; set; }
-    }
-
-    public class Elevation
-    {
-        /// <summary>
-        /// Conditional! Elevation in feet
-        /// </summary>
-        [JsonProperty("feet")]
-        public int Feet { get; set; }
-
-        /// <summary>
-        /// Conditional! Method used to determine elevation - 'Surveyed' or 'Estimated'
-        /// </summary>
-        [JsonProperty("method")]
-        public string Method { get; set; }
-    }
-
-    public class TimeZone
-    {
-        /// <summary>
-        /// Timezone offset subtracted or added to GMT time
-        /// </summary>
-        [JsonProperty("gmt")]
-        public int Gmt { get; set; }
-
-        /// <summary>
-        /// Timezone offset subtracted or added to GMT time including DST
-        /// </summary>
-        [JsonProperty("dst")]
-        public int Dst { get; set; }
-
-        /// <summary>
-        /// Timezone text string
-        /// </summary>
-        [JsonProperty("tzid")]
-        public string Tzid { get; set; }
     }
 }

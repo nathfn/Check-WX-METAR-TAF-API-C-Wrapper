@@ -16,9 +16,9 @@ namespace CheckMxAviationWeather.Api.Services
         protected readonly ApiHandles ApiHandles;
         protected readonly ApiResponseFactory RawStreakApiResponseFactory;
 
-        internal ServicesBase(string apiKey, string apiBaseUrl, int metarTafCacheTimeInMinutes, int stationCacheTimeInMinutes)
+        internal ServicesBase(string apiKey, string apiBaseUrl, int metarTafCacheTimeInMinutes, int stationCacheTimeInMinutes, string acceptHeader)
         {
-            Http = new Http(apiKey, apiBaseUrl, metarTafCacheTimeInMinutes, stationCacheTimeInMinutes);
+            Http = new Http(apiKey, apiBaseUrl, metarTafCacheTimeInMinutes, stationCacheTimeInMinutes, acceptHeader);
             ApiHandles = new ApiHandles();
             RawStreakApiResponseFactory = new ApiResponseFactory();
             MetarTafCacheTimeInMinutes = metarTafCacheTimeInMinutes;

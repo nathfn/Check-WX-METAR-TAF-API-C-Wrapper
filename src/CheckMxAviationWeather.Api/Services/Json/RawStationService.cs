@@ -7,9 +7,9 @@ using CheckMxAviationWeather.Api.Models;
 
 namespace CheckMxAviationWeather.Api.Services.Json
 {
-    public class JsonStationService : ServicesBase
+    public class RawStationService : ServicesBase
     {
-        internal JsonStationService(string apiKey, string apiBaseUrl, int metarTafCacheTimeInMinutes, int stationCacheTimeInMinutes) : base(apiKey, apiBaseUrl, metarTafCacheTimeInMinutes, stationCacheTimeInMinutes) { }
+        internal RawStationService(string apiKey, string apiBaseUrl, int metarTafCacheTimeInMinutes, int stationCacheTimeInMinutes, string acceptHeader) : base(apiKey, apiBaseUrl, metarTafCacheTimeInMinutes, stationCacheTimeInMinutes, acceptHeader) { }
 
         /// <summary>
         /// Returns the latest Station information for a single ICAO code.

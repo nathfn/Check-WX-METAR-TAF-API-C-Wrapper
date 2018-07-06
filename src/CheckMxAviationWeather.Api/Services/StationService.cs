@@ -1,19 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CheckMxAviationWeather.Api.Enum;
+using CheckMxAviationWeather.Api.Factories;
 using CheckMxAviationWeather.Api.Models;
 using CheckMxAviationWeather.Api.Services.Json;
-using Newtonsoft.Json;
 
 namespace CheckMxAviationWeather.Api.Services
 {
     public class StationService
     {
-        private readonly JsonStationService _jsonStationService;
+        private readonly RawStationService _jsonStationService;
+        private readonly StationFactory _stationFactory;
 
-        internal StationService(string apiKey, string apiBaseUrl, int metarTafCacheTimeInMinutes, int stationCacheTimeInMinutes)
+        internal StationService(string apiKey, string apiBaseUrl, int metarTafCacheTimeInMinutes, int stationCacheTimeInMinutes, string acceptHeader)
         {
-            _jsonStationService = new JsonStationService(apiKey, apiBaseUrl, metarTafCacheTimeInMinutes, stationCacheTimeInMinutes);
+            _jsonStationService = new RawStationService(apiKey, apiBaseUrl, metarTafCacheTimeInMinutes, stationCacheTimeInMinutes, acceptHeader);
+            _stationFactory = new StationFactory();
         }
 
         /// <summary>
@@ -23,9 +25,7 @@ namespace CheckMxAviationWeather.Api.Services
         /// <returns></returns>
         public Station Single(string icao)
         {
-            var station = _jsonStationService.Single(icao);
-            var asObj = JsonConvert.DeserializeObject<ApiResponseObject<List<Station>>>(station.Json);
-            return asObj?.Data?.FirstOrDefault();
+            return _stationFactory.BuildMultiple(_jsonStationService.Single(icao).Json).FirstOrDefault();
         }
 
         /// <summary>
@@ -35,9 +35,7 @@ namespace CheckMxAviationWeather.Api.Services
         /// <returns></returns>
         public List<Station> Multiple(List<string> icaoList)
         {
-            var station = _jsonStationService.Multiple(icaoList);
-            var asObj = JsonConvert.DeserializeObject<ApiResponseObject<List<Station>>>(station.Json);
-            return asObj?.Data ?? new List<Station>();
+            return _stationFactory.BuildMultiple(_jsonStationService.Multiple(icaoList).Json);
         }
 
         /// <summary>
@@ -51,9 +49,7 @@ namespace CheckMxAviationWeather.Api.Services
         /// <returns></returns>
         public List<Station> Radius(string icao, int radius, StationType? stationType = null)
         {
-            var station = _jsonStationService.Radius(icao, radius, stationType);
-            var asObj = JsonConvert.DeserializeObject<ApiResponseObject<List<Station>>>(station.Json);
-            return asObj?.Data ?? new List<Station>();
+            return _stationFactory.BuildMultiple(_jsonStationService.Radius(icao, radius, stationType).Json);
         }
 
         /// <summary>
@@ -66,9 +62,7 @@ namespace CheckMxAviationWeather.Api.Services
         /// <returns></returns>
         public Station LatitudeLongitude(double latitude, double longitude, StationType? stationType = null)
         {
-            var station = _jsonStationService.LatitudeLongitude(latitude, longitude, stationType);
-            var asObj = JsonConvert.DeserializeObject<ApiResponseObject<List<Station>>>(station.Json);
-            return asObj?.Data?.FirstOrDefault();
+            return _stationFactory.BuildMultiple(_jsonStationService.LatitudeLongitude(latitude, longitude, stationType).Json).FirstOrDefault();
         }
 
         /// <summary>
@@ -82,9 +76,7 @@ namespace CheckMxAviationWeather.Api.Services
         /// <returns></returns>
         public List<Station> LatitudeLongitudeRadius(double latitude, double longitude, int radius, StationType? stationType = null)
         {
-            var station = _jsonStationService.LatitudeLongitudeRadius(latitude, longitude, radius, stationType);
-            var asObj = JsonConvert.DeserializeObject<ApiResponseObject<List<Station>>>(station.Json);
-            return asObj?.Data ?? new List<Station>();
+            return _stationFactory.BuildMultiple(_jsonStationService.LatitudeLongitudeRadius(latitude, longitude, radius, stationType).Json);
         }
     }
 }

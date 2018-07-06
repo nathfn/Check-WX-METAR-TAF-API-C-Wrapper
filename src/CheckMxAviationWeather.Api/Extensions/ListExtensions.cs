@@ -4,7 +4,7 @@ namespace CheckMxAviationWeather.Api.Extensions
 {
     public static class ListExtensions
     {
-        public static bool AnyNullSafe<T>(this IEnumerable<T> list)
+        internal static bool AnyNullSafe<T>(this IEnumerable<T> list)
         {
             if (list == null)
                 return false;

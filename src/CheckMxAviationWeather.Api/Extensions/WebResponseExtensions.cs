@@ -2,9 +2,9 @@
 
 namespace CheckMxAviationWeather.Api.Extensions
 {
-    internal static class WebResponseExtensions
+    public static class WebResponseExtensions
     {
-        public static int GetHttpStatusCode(this WebResponse r)
+        internal static int GetHttpStatusCode(this WebResponse r)
         {
             return (int)((HttpWebResponse)r).StatusCode;
         }

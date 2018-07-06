@@ -17,13 +17,15 @@ namespace CheckMxAviationWeather.Api.Communication
         private readonly string _apiBaseUrl;
         private readonly int _metarTafCacheTimeInMinutes;
         private readonly int _stationCacheTimeInMinutes;
+        private readonly string _acceptHeader;
 
-        public Http(string apiKey, string apiBaseUrl, int metarTafCacheTimeInMinutes, int stationCacheTimeInMinutes)
+        internal Http(string apiKey, string apiBaseUrl, int metarTafCacheTimeInMinutes, int stationCacheTimeInMinutes, string acceptHeader)
         {
             _apiKey = apiKey;
             _apiBaseUrl = apiBaseUrl;
             _metarTafCacheTimeInMinutes = metarTafCacheTimeInMinutes;
             _stationCacheTimeInMinutes = stationCacheTimeInMinutes;
+            _acceptHeader = acceptHeader;
         }
 
         public string Get(string apiHandle, out int httpStatusCode)
@@ -35,7 +37,7 @@ namespace CheckMxAviationWeather.Api.Communication
         {
             try
             {
-                var cacheKey = "CheckMx-" + apiHandle;
+                var cacheKey = ("CheckMx-" + apiHandle).ToLower();
                 var fromCache = CacheWrapper<string>.Get(cacheKey);
                 if (!string.IsNullOrWhiteSpace(fromCache))
                 {
@@ -49,6 +51,7 @@ namespace CheckMxAviationWeather.Api.Communication
                 request.Method = method.Method;
                 request.ContentType = requestContentType;
                 request.Headers["X-API-Key"] = _apiKey;
+                request.Accept = _acceptHeader;
                 request.Expect = "application/json";
 
                 // Optional payload

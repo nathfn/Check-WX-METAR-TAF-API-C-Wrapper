@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CheckMxAviationWeather.Api.Tests.Services
 {
     [TestClass]
-    public class StationServicesTests
+    public class StationServicesTest
     {
         [TestMethod]
         public void TestException()
@@ -15,7 +15,7 @@ namespace CheckMxAviationWeather.Api.Tests.Services
             var service = new CheckWxServices(TestSetup.GetTestApiKey() + "MONKEY"); // Making the API key wrong on purpose
             try
             {
-                service.Stations.Single("EKAH");
+                service.Stations.Single("EKCH");
                 Assert.Fail("API key was accepted even though it was fake!");
             }
             catch (ApiException ei)
@@ -26,6 +26,16 @@ namespace CheckMxAviationWeather.Api.Tests.Services
             {
                 Assert.Fail("API key was accepted even though it was fake!");
             }
+        }
+
+        [TestMethod]
+        public void TestInvalid()
+        {
+            var service = new CheckWxServices(TestSetup.GetTestApiKey()); // Making the API key wrong on purpose
+
+            var x = service.Stations.Single("MONKEY_BUSINESS_NOT_VALID");
+            Assert.AreEqual(true, x.Error);
+            Assert.AreEqual("MONKEY_BUSINESS_NOT_VALID Invalid Station ICAO", x.ErrorText);
         }
 
         [TestMethod]
