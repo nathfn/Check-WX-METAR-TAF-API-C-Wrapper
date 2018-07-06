@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CheckMxAviationWeather.Api")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("CheckMx Aviation Weather API")]
+[assembly: AssemblyDescription("API for interacting with Check MX Aviation Weather API in .NET")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("CheckMx")]
 [assembly: AssemblyProduct("CheckMxAviationWeather.Api")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
