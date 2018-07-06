@@ -4,7 +4,7 @@ Website: https://checkwx.com/
 
 API Documentation: https://api.checkwx.com/
 
-This is .NET/C# wrapper which can be used to interact with the Check WX METAR/TAF/STATION API. This projecty has only one dependency: Newtonsoft.Json v. 9.0.1+ (https://www.nuget.org/packages/newtonsoft.json/) 
+This is .NET/C# wrapper which can be used to interact with the Check WX METAR/TAF/STATION API. This projecty has only one dependency: Newtonsoft.Json v. 11.0.0+ (https://www.nuget.org/packages/newtonsoft.json/) 
 
 The wrapper is written to give users three ways of communicating with the API: 
 
@@ -14,7 +14,7 @@ The wrapper is written to give users three ways of communicating with the API:
 
 <h3>Prerequisites - Before you begin you need the following:</h3>
 - The latest release of this package
-- The latest version of Newtonsoft.Json (9.0.1+). Download it via NuGet.
+- The latest version of Newtonsoft.Json (11.0.0+). Download it via NuGet.
 - An API key from Check MX (free, 2000 request/day limit): https://www.streak.com/api/#apikey
 
 <h3>API services with domain models (.NET)</h3>
