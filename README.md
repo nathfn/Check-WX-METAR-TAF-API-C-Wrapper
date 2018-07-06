@@ -1,7 +1,7 @@
-# Check WX METAR/TAF/Station REST API Wrapper for .NET/C#
 <h1>A .NET/C# implementation of the Check WX METAR TAF STATION REST API</h1>
 
 Website: https://checkwx.com/
+
 API Documentation: https://api.checkwx.com/
 
 This is .NET/C# wrapper which can be used to interact with the Check WX METAR/TAF/STATION API. This projecty has only one dependency: Newtonsoft.Json v. 9.0.1+ (https://www.nuget.org/packages/newtonsoft.json/) 
@@ -38,3 +38,17 @@ var metarJsonEkahDecoded = checkWxServices.JsonMetars.SingleDecoded("EKAH"); // 
 
 var metarXmlEkahRaw = checkWxServices.JsonMetars.SingleRaw("EKAH"); // Returns current METAR for EKAH as a string
 ```
+
+<h3>Errors</h3>
+When using the strongly typed API (.NET objects) all returned types has the following two properties:
+```C#
+/// <summary>
+/// Indicates that there was an error retrieving the data
+/// </summary>
+public bool Error { get; set; }
+/// <summary>
+/// The error text from the API
+/// </summary>
+public string ErrorText { get; set; }
+```
+If the API returns an error the Error boolean is set to true and the error text from the API is attached as ErrorText. The latter can be used for debugging purposes.
