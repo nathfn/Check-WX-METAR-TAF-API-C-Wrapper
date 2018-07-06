@@ -1,5 +1,4 @@
-# Check-WX-METAR-TAF-API-C-Wrapper
-# Streak.NET
+# Check WX METAR/TAF/Station REST API Wrapper for .NET/C#
 <h1>A .NET/C# implementation of the Check WX METAR TAF STATION REST API</h1>
 
 Website: https://checkwx.com/
