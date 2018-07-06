@@ -41,6 +41,7 @@ var metarXmlEkahRaw = checkWxServices.JsonMetars.SingleRaw("EKAH"); // Returns c
 
 <h3>Errors</h3>
 When using the strongly typed API (.NET objects) all returned types has the following two properties:
+
 ```C#
 /// <summary>
 /// Indicates that there was an error retrieving the data
@@ -51,4 +52,5 @@ public bool Error { get; set; }
 /// </summary>
 public string ErrorText { get; set; }
 ```
+
 If the API returns an error the Error boolean is set to true and the error text from the API is attached as ErrorText. The latter can be used for debugging purposes.
