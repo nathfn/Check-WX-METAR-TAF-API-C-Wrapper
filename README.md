@@ -40,7 +40,7 @@ var metarXmlEkahRaw = checkWxServices.JsonMetars.SingleRaw("EKAH"); // Returns c
 ```
 
 <h3>Errors</h3>
-When using the strongly typed API (.NET objects) all returned types has the following two properties:
+When using the strongly typed API (.NET objects) all returned types have the following two properties:
 
 ```C#
 /// <summary>
