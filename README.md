@@ -15,7 +15,7 @@ The wrapper is written to give users three ways of communicating with the API:
 <h3>Prerequisites - Before you begin you need the following:</h3>
 - The latest release of this package
 - The latest version of Newtonsoft.Json (11.0.0+). Download it via NuGet.
-- An API key from Check MX (free, 2000 request/day limit): https://www.streak.com/api/#apikey
+- An API key from Check MX (free, 2000 request/day limit): https://www.checkwx.com/signup
 
 <h3>API services with domain models (.NET)</h3>
 You can use the services like this:
