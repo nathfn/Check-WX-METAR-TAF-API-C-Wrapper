@@ -8,7 +8,7 @@ namespace CheckMxAviationWeather.Api.Models
         /// Conditional! Elevation in feet
         /// </summary>
         [JsonProperty("feet")]
-        public int Feet { get; set; }
+        public double Feet { get; set; }
 
         /// <summary>
         /// Conditional! Elevation in metres

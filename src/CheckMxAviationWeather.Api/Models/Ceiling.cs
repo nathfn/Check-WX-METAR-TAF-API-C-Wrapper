@@ -18,7 +18,7 @@ namespace CheckMxAviationWeather.Api.Models
         /// Ceiling feet above ground level
         /// </summary>
         [JsonProperty("feet_agl")]
-        public int FeetAgl { get; set; }
+        public double FeetAgl { get; set; }
         /// <summary>
         /// Ceiling meters above ground level
         /// </summary>
