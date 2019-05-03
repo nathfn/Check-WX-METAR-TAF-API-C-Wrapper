@@ -35,10 +35,16 @@ namespace CheckMxAviationWeather.Api.Models
         public string City { get; set; }
 
         /// <summary>
-        /// Country abbreviation
+        /// Country
         /// </summary>
         [JsonProperty("country")]
-        public string Country { get; set; }
+        public Country Country { get; set; }
+
+        /// <summary>
+        /// Location
+        /// </summary>
+        [JsonProperty("location")]
+        public Location Location { get; set; }
 
         /// <summary>
         /// Conditional! Elevation in feet

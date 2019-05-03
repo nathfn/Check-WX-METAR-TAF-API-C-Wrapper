@@ -14,7 +14,7 @@ namespace CheckMxAviationWeather.Api.Models
         /// Conditional! Elevation in metres
         /// </summary>
         [JsonProperty("meters")]
-        public int Meters { get; set; }
+        public double Meters { get; set; }
 
         /// <summary>
         /// Conditional! Method used to determine elevation - 'Surveyed' or 'Estimated'

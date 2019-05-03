@@ -63,10 +63,12 @@
     <Compile Include="Models\Ceiling.cs" />
     <Compile Include="Models\Cloud.cs" />
     <Compile Include="Models\Condition.cs" />
+    <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Elevation.cs" />
     <Compile Include="Models\ErrorObject.cs" />
     <Compile Include="Models\Forecast.cs" />
     <Compile Include="Models\ForecastTimestamp.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Metar.cs" />
     <Compile Include="Models\ApiResponse.cs" />
     <Compile Include="Models\Position.cs" />
